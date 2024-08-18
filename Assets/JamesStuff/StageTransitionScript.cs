@@ -8,7 +8,7 @@ public class StageTransitionScript : MonoBehaviour
     private GameObject ground;
     private float initialJitter = 0.025f;
     private float jitterDuration = 2.5f;
-    private float glideSmoothness = 0.01f;
+    private float glideSpeed = 1.0f;
     private float glideDuration = 4.0f;
     private int animationStage = 0;
 
@@ -46,9 +46,9 @@ public class StageTransitionScript : MonoBehaviour
             
             var allPieces = GameObject.FindGameObjectsWithTag("Piece");
             foreach (GameObject piece in allPieces) {
-                piece.transform.position = piece.transform.position + (Vector3.down * 2.5f * Time.deltaTime);
+                piece.transform.position = piece.transform.position + (Vector3.down * glideSpeed * Time.deltaTime);
             }
-            ground.transform.position = ground.transform.position + (Vector3.down * 2.5f * Time.deltaTime);
+            ground.transform.position = ground.transform.position + (Vector3.down * glideSpeed * Time.deltaTime);
             
         } else if (animationStage == 2) {
             pieceSpawner.GetComponent<PieceSpawnerScript>().isActive = true;

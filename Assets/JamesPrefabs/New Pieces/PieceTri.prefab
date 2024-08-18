@@ -125,7 +125,7 @@ Rigidbody:
   m_GameObject: {fileID: 362300361792364709}
   serializedVersion: 4
   m_Mass: 1
-  m_Drag: 0
+  m_Drag: 5
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
@@ -158,6 +158,7 @@ MonoBehaviour:
   noDragColor: {r: 0.754717, g: 0.5977486, b: 0.4022784, a: 1}
   disabledColor: {r: 0.16862746, g: 0.14509805, b: 0.11372549, a: 1}
   isStable: 0
+  hasCollided: 0
   nextStageManager: {fileID: 6698597175211552939, guid: b9aa7d84c67c7455884c0783982a4dea, type: 3}
   isActive: 1
 --- !u!114 &1426421570178332424

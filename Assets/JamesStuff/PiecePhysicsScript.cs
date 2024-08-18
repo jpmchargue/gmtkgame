@@ -21,9 +21,10 @@ public class PiecePhysicsScript : MonoBehaviour
     public Color disabledColor = new Color(1.0f, 0.0f, 1.0f);
 
     private Vector3 lastPosition;
-    private float stabilityMovementThreshold = 0.01f;
+    private float stabilityMovementThreshold = 0.02f;
     private int stableFrames;
     public bool isStable;
+    public bool hasCollided = false;
 
     private float lossThreshold = -1.0f;
 
@@ -32,6 +33,7 @@ public class PiecePhysicsScript : MonoBehaviour
     private GameObject pieceSpawner;
     public GameObject nextStageManager;
     public bool isActive = true;
+    
     
 
     // Start is called before the first frame update
@@ -132,7 +134,7 @@ public class PiecePhysicsScript : MonoBehaviour
         Debug.Log("NEXT STAGE");
         var allPieces = GameObject.FindGameObjectsWithTag("Piece");
         foreach (GameObject piece in allPieces) {
-            if (!piece.GetComponent<PiecePhysicsScript>().isStable) {
+            if (!piece.GetComponent<PiecePhysicsScript>().isStable || !piece.GetComponent<PiecePhysicsScript>().hasCollided) {
                 return;
             }
         }
@@ -182,6 +184,7 @@ public class PiecePhysicsScript : MonoBehaviour
     }
 
     void OnCollisionEnter(Collision collision) {
+        hasCollided = true;
         stopDrag();
     }
 }
