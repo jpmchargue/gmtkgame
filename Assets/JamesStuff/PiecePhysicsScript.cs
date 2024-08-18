@@ -26,6 +26,7 @@ public class PiecePhysicsScript : MonoBehaviour
     public bool isStable;
     public bool hasCollided = false;
     private bool hasBeenGrabbed = false;
+    private InGameUIManager inGameUIManager;
 
     private float lossThreshold = 19.5f;
 
@@ -59,6 +60,9 @@ public class PiecePhysicsScript : MonoBehaviour
         buildThreshold = GameObject.Find("BuildThreshold");
         pieceSpawner = GameObject.Find("PieceSpawner");
         mainGameLoop = GameObject.Find("MainGameLoop").GetComponent<MainGameLoop>();
+        inGameUIManager = GameObject.Find("InGameMenuCanvas").GetComponent<InGameUIManager>();
+
+        inGameUIManager.UpdateScore(10);
         //nextStageManager = GameObject.Find("NextStageManager");
     }
 
@@ -144,19 +148,27 @@ public class PiecePhysicsScript : MonoBehaviour
         // Run the next stage animation
         Debug.Log("Stable above line, running next stage check...");
         var allPieces = GameObject.FindGameObjectsWithTag("Piece");
+
+        var piecesLocked = 0;
         foreach (GameObject piece in allPieces) {
             if (!piece.GetComponent<PiecePhysicsScript>().isStable) {
                 if (piece.GetComponent<PiecePhysicsScript>().hasCollided) {
                     return;
                 }
             }
+            piecesLocked += 1;
         }
         // Delete all pieces that haven't landed yet
         foreach (GameObject piece in allPieces) {
             if (!piece.GetComponent<PiecePhysicsScript>().hasCollided) {
+                piecesLocked -= 1;
                 Destroy(piece);
             }
         }
+
+        Debug.Log($"Pieces Locked: {piecesLocked}");
+        // Update score w/ locked pieces
+        inGameUIManager.UpdateScore(piecesLocked * 20);
         Debug.Log("NEXT STAGE - ALL STABLE");
         foreach (GameObject piece in allPieces) {
             piece.GetComponent<Rigidbody>().isKinematic = true;
