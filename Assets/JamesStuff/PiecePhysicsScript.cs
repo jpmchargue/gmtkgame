@@ -21,12 +21,12 @@ public class PiecePhysicsScript : MonoBehaviour
     public Color disabledColor = new Color(1.0f, 0.0f, 1.0f);
 
     private Vector3 lastPosition;
-    private float stabilityMovementThreshold = 0.02f;
+    private float stabilityMovementThreshold = 0.05f;
     private int stableFrames;
     public bool isStable;
     public bool hasCollided = false;
 
-    private float lossThreshold = -1.0f;
+    private float lossThreshold = 19.5f;
 
     // Game Flow Objects
     private GameObject buildThreshold;
@@ -35,6 +35,12 @@ public class PiecePhysicsScript : MonoBehaviour
     public MainGameLoop mainGameLoop;
     public bool isActive = true;
     
+    // Sounds
+    public AudioClip soundHover;
+    public AudioClip soundGrab;
+    public AudioClip soundDrop;
+    public AudioClip soundLockedIn;
+    private Vector3 cameraLocation = new Vector3(-16.55f, 23.37f, -9f);
     
 
     // Start is called before the first frame update
@@ -76,6 +82,7 @@ public class PiecePhysicsScript : MonoBehaviour
 
                 if (Input.GetMouseButtonUp(0)) {
                     stopDrag();
+                    AudioSource.PlayClipAtPoint(soundDrop, cameraLocation);
                 }
             }
 
@@ -119,6 +126,7 @@ public class PiecePhysicsScript : MonoBehaviour
         zEulerAngle = transform.eulerAngles.z;
         rb.drag = dragDrag;
         GetComponent<MeshRenderer>().material.color = dragColor;
+        AudioSource.PlayClipAtPoint(soundGrab, cameraLocation);
     }
 
     void stopDrag() {
@@ -146,11 +154,12 @@ public class PiecePhysicsScript : MonoBehaviour
             piece.GetComponent<MeshRenderer>().material.color = disabledColor;
             piece.GetComponent<PiecePhysicsScript>().isActive = false;
         }
+        AudioSource.PlayClipAtPoint(soundLockedIn, cameraLocation);
         mainGameLoop.InitiateReset();
     }
 
     void loseGame() {
-        //Debug.Log("Game Over");
+        Debug.Log("Game Over");
     }
 
     void FixedUpdate() {
@@ -173,8 +182,9 @@ public class PiecePhysicsScript : MonoBehaviour
     void OnMouseOver()
     {
         //If your mouse hovers over the GameObject with the script attached, output this message
-        if (!isHovered) {
+        if (isActive && !isHovered) {
             GetComponent<Outline>().enabled = true;
+            AudioSource.PlayClipAtPoint(soundHover, cameraLocation);
             isHovered = true;
         }
     }
@@ -187,7 +197,9 @@ public class PiecePhysicsScript : MonoBehaviour
     }
 
     void OnCollisionEnter(Collision collision) {
-        hasCollided = true;
-        stopDrag();
+        if (isActive) {
+            hasCollided = true;
+            stopDrag();
+        }
     }
 }

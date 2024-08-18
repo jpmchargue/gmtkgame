@@ -11,6 +11,8 @@ public class StageTransitionScript : MonoBehaviour
     private float glideSpeed = 1.0f;
     private float glideDuration = 4.0f;
     private int animationStage = 0;
+    public AudioClip soundRumble;
+    private Vector3 cameraLocation = new Vector3(-16.55f, 23.37f, -9f);
 
     // Start is called before the first frame update
     void Start()
@@ -19,6 +21,7 @@ public class StageTransitionScript : MonoBehaviour
         pieceSpawner = GameObject.Find("PieceSpawner");
         StartCoroutine(JitterCooldown());
         StartCoroutine(MovementCooldown());
+        AudioSource.PlayClipAtPoint(soundRumble, cameraLocation);
     }
 
     // Update is called once per frame
