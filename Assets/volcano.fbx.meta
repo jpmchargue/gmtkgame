@@ -12,7 +12,17 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: lava_top
+    second: {fileID: 2100000, guid: 9fecf35c4484cd84ebae64a39b10c94b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: mtn_mat
+    second: {fileID: -876546973899608171, guid: cbced240c95a00949843e7a3370ca1af, type: 3}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: platform_mat
     second: {fileID: -876546973899608171, guid: cbced240c95a00949843e7a3370ca1af, type: 3}
   materials:
     materialImportMode: 2
