@@ -31,7 +31,8 @@ public class PiecePhysicsScript : MonoBehaviour
     // Game Flow Objects
     private GameObject buildThreshold;
     private GameObject pieceSpawner;
-    public GameObject nextStageManager;
+    
+    public MainGameLoop mainGameLoop;
     public bool isActive = true;
     
     
@@ -50,6 +51,7 @@ public class PiecePhysicsScript : MonoBehaviour
 
         buildThreshold = GameObject.Find("BuildThreshold");
         pieceSpawner = GameObject.Find("PieceSpawner");
+        mainGameLoop = GameObject.Find("MainGameLoop").GetComponent<MainGameLoop>();
         //nextStageManager = GameObject.Find("NextStageManager");
     }
 
@@ -138,12 +140,13 @@ public class PiecePhysicsScript : MonoBehaviour
                 return;
             }
         }
+        Debug.Log("ALL STABLE");
         foreach (GameObject piece in allPieces) {
             piece.GetComponent<Rigidbody>().isKinematic = true;
             piece.GetComponent<MeshRenderer>().material.color = disabledColor;
             piece.GetComponent<PiecePhysicsScript>().isActive = false;
         }
-        Instantiate(nextStageManager, Vector3.zero, Quaternion.identity);
+        mainGameLoop.InitiateReset();
     }
 
     void loseGame() {

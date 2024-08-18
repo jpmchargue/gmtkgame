@@ -14,16 +14,17 @@ public class DialogueTyper : MonoBehaviour
     public float textSpeed;
     public SetPortraitImage portraitImage;
     public Texture myTexture;
+    public MainGameLoop mainGameLoop;
 
-    public void TypeDialogue(List<(string, Texture)> dialogue)
+    public void TypeDialogue(List<(string, Texture)> dialogue, String dialogueType)
     {
         portraitAnimator.Play("PortraitAppear");
         
         textComponent.text = string.Empty;
-        StartCoroutine(TypeLine(dialogue));
+        StartCoroutine(TypeLine(dialogue, dialogueType));
     }
 
-    public IEnumerator TypeLine(List<(string, Texture)> dialogue)
+    public IEnumerator TypeLine(List<(string, Texture)> dialogue, String dialogueType)
     {
         yield return new WaitForSeconds(0.5f);
         portraitAnimator.enabled = false;
@@ -46,5 +47,6 @@ public class DialogueTyper : MonoBehaviour
         }
         portraitAnimator.enabled = true;
         portraitAnimator.Play("PortraitDisappear");
+        mainGameLoop.DialogueComplete(dialogueType);
     }
 }

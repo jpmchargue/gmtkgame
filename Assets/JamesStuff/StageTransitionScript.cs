@@ -17,7 +17,6 @@ public class StageTransitionScript : MonoBehaviour
     {
         ground = GameObject.Find("Ground");
         pieceSpawner = GameObject.Find("PieceSpawner");
-        pieceSpawner.GetComponent<PieceSpawnerScript>().isActive = false;
         StartCoroutine(JitterCooldown());
         StartCoroutine(MovementCooldown());
     }
