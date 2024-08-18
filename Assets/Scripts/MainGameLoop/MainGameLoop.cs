@@ -12,6 +12,9 @@ public class MainGameLoop : MonoBehaviour
     public PieceSpawnerScript pieceSpawnerScript;
     public GameObject nextStageManager;
 
+    public bool alreadyResetFlag1 = false;
+    public bool alreadyResetFlag2 = false;
+
 
     private Dictionary<string, (string, Texture)> villainDialogueMap;
 
@@ -42,6 +45,12 @@ public class MainGameLoop : MonoBehaviour
 
     public void InitiateReset()
     {
+        if(alreadyResetFlag1 == true){
+            Instantiate(nextStageManager, Vector3.zero, Quaternion.identity);
+            return;
+        }
+
+        
         Debug.Log("Initiating Reset");
         pieceSpawnerScript.isActive = false;
         dialogueTyper.TypeDialogue(new List<(string, Texture)> {
@@ -49,13 +58,24 @@ public class MainGameLoop : MonoBehaviour
             (villainDialogueMap["RESET1.5"].Item1, villainDialogueMap["RESET1.5"].Item2),
             (villainDialogueMap["RESET2"].Item1, villainDialogueMap["RESET2"].Item2)},
             "RESET");
+
+
+        alreadyResetFlag1 = true;
     }
     public void InitiateResetOutro()
     {
+        if(alreadyResetFlag2 == true){
+            return;
+        }
+
+
+
         dialogueTyper.TypeDialogue(new List<(string, Texture)> {
             (villainDialogueMap["RESETOUTRO1"].Item1, villainDialogueMap["RESETOUTRO1"].Item2),
             (villainDialogueMap["RESETOUTRO2"].Item1, villainDialogueMap["RESETOUTRO2"].Item2)},
            "RESETOUTRO");
+
+        alreadyResetFlag2 = true;
     }
 
     public void DialogueComplete(String dialogueType)
@@ -63,6 +83,7 @@ public class MainGameLoop : MonoBehaviour
         if(dialogueType == "INTRO" || dialogueType == "RESETOUTRO")
         {
             pieceSpawnerScript.isActive = true;
+
         }
         else if (dialogueType == "RESET")
         {

@@ -14,31 +14,50 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lines:
   - dialogueKey: INTRO1
-    text: ... and after that, NO one will be able to stop me. HAHAHA-
+    text: "Ah welcome, welcome! I\u2019m Dr. Diabolico\u2026 And you must be the
+      latest recruit"
     portrait: {fileID: 2800000, guid: a68ea1d03f6631745bf0248574fb330f, type: 3}
   - dialogueKey: INTRO2
-    text: What is it??  I'm very in the middle of something.
-    portrait: {fileID: 2800000, guid: be9673eb9fb6523418cb2dea7401c62c, type: 3}
+    text: "You know, it\u2019s not every day I find someone foolish \u2014ah, I mean
+      brave enough to join my ranks"
+    portrait: {fileID: 2800000, guid: a68ea1d03f6631745bf0248574fb330f, type: 3}
   - dialogueKey: INTRO3
-    text: ...
-    portrait: {fileID: 2800000, guid: be9673eb9fb6523418cb2dea7401c62c, type: 3}
+    text: ' As it would have it, I have quite the fantastic first task for you to
+      undertake...'
+    portrait: {fileID: 2800000, guid: a68ea1d03f6631745bf0248574fb330f, type: 3}
   - dialogueKey: INTRO4
-    text: 'Ah. You''re the contractor. What '
-    portrait: {fileID: 2800000, guid: be9673eb9fb6523418cb2dea7401c62c, type: 3}
+    text: "You see, I just purchased this beautiful piece of real estate here\u2026
+      but it is regretfully lair-less"
+    portrait: {fileID: 2800000, guid: a68ea1d03f6631745bf0248574fb330f, type: 3}
   - dialogueKey: INTRO5
-    text: 'As I''m sure you saw on the posting, my last house was destroyed in a...
-      gas leak '
+    text: I need you to build me a new fortress, a citadel of darkness that will
+      stand as a testament to our power!
     portrait: {fileID: 2800000, guid: a68ea1d03f6631745bf0248574fb330f, type: 3}
+  - dialogueKey: INTRO6
+    text: " I\u2019ve taken the liberty of ordering all the materials you need. No
+      expense was spared! "
+    portrait: {fileID: 2800000, guid: a68ea1d03f6631745bf0248574fb330f, type: 3}
+  - dialogueKey: INTRO7
+    text: " Like seriously though, I drained my kid\u2019s college fund for this.  "
+    portrait: {fileID: 2800000, guid: 006511ea05146ae4bb7f6e339f99ed25, type: 3}
+  - dialogueKey: INTRO8
+    text: "Don\u2019t allow a single piece to fall into the lava, or the consequences
+      will be most severe\u2026."
+    portrait: {fileID: 2800000, guid: be9673eb9fb6523418cb2dea7401c62c, type: 3}
   - dialogueKey: RESET1
-    text: The raw You reached height H should be delivered very shortly. I trust
-      you
-    portrait: {fileID: 2800000, guid: 006511ea05146ae4bb7f6e339f99ed25, type: 3}
-  - dialogueKey: RESET2
-    text: sadfdsaf
-    portrait: {fileID: 2800000, guid: 006511ea05146ae4bb7f6e339f99ed25, type: 3}
-  - dialogueKey: RESET3
-    text: sdafa
-    portrait: {fileID: 2800000, guid: 006511ea05146ae4bb7f6e339f99ed25, type: 3}
-  - dialogueKey: RESET4
-    text: The rawasdfasdfmaterials should be delivered very shortly. I trust you
+    text: 'Ah splendid! I''m quite delighted to see this structure coming together
+      so flawlessly! '
     portrait: {fileID: 2800000, guid: a68ea1d03f6631745bf0248574fb330f, type: 3}
+  - dialogueKey: RESET1.5
+    text: You know, I had a surveryor come in, babbling about "unstable ground" or
+      some such nonsense.
+    portrait: {fileID: 2800000, guid: be9673eb9fb6523418cb2dea7401c62c, type: 3}
+  - dialogueKey: RESET2
+    text: Naturally, I had the imbecile tossed into the volcano for his insolence
+    portrait: {fileID: 2800000, guid: a68ea1d03f6631745bf0248574fb330f, type: 3}
+  - dialogueKey: RESETOUTRO1
+    text: ...
+    portrait: {fileID: 2800000, guid: 006511ea05146ae4bb7f6e339f99ed25, type: 3}
+  - dialogueKey: RESETOUTRO2
+    text: Perhaps this oversight is on me... but no matter. Get back to work!
+    portrait: {fileID: 2800000, guid: 006511ea05146ae4bb7f6e339f99ed25, type: 3}

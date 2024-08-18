@@ -15,7 +15,7 @@ public class PiecePhysicsScript : MonoBehaviour
     private float dragAccelStrength = 1.5f;
     private float dragDrag = 10;
     private float zEulerAngle = 0.0f;
-    private float dragRotationSpeed = 100.0f;
+    private float dragRotationSpeed = 300.0f;
     public Color noDragColor = new Color(0.6352941f, 0.6352941f, 0.66f);
     private Color dragColor = new Color(0.0f, 0.737255f, 1.0f, 0.6f);
     public Color disabledColor = new Color(1.0f, 0.0f, 1.0f);
@@ -25,6 +25,7 @@ public class PiecePhysicsScript : MonoBehaviour
     private int stableFrames;
     public bool isStable;
     public bool hasCollided = false;
+    private bool hasBeenGrabbed = false;
 
     private float lossThreshold = 19.5f;
 
@@ -70,10 +71,10 @@ public class PiecePhysicsScript : MonoBehaviour
                     startDrag();
                 }
             } else {
-                if (Input.GetKey("left")) {
+                if (Input.GetKey("left") || Input.GetKey(KeyCode.A)) {
                     zEulerAngle += dragRotationSpeed * Time.deltaTime;
                 }
-                if (Input.GetKey("right")) {
+                if (Input.GetKey("right") || Input.GetKey(KeyCode.D)) {
                     zEulerAngle -= dragRotationSpeed * Time.deltaTime;
                 }
 
@@ -108,7 +109,7 @@ public class PiecePhysicsScript : MonoBehaviour
             if (!isStable && stableFrames > 60) {
                 isStable = true;
                 Debug.Log("I am stable");
-                if (transform.position.y > buildThreshold.transform.position.y) {
+                if (transform.position.y > buildThreshold.transform.position.y && hasCollided) {
                     nextStage();
                 }
             }
@@ -141,14 +142,22 @@ public class PiecePhysicsScript : MonoBehaviour
 
     void nextStage() {
         // Run the next stage animation
-        Debug.Log("NEXT STAGE");
+        Debug.Log("Stable above line, running next stage check...");
         var allPieces = GameObject.FindGameObjectsWithTag("Piece");
         foreach (GameObject piece in allPieces) {
-            if (!piece.GetComponent<PiecePhysicsScript>().isStable || !piece.GetComponent<PiecePhysicsScript>().hasCollided) {
-                return;
+            if (!piece.GetComponent<PiecePhysicsScript>().isStable) {
+                if (piece.GetComponent<PiecePhysicsScript>().hasCollided) {
+                    return;
+                }
             }
         }
-        Debug.Log("ALL STABLE");
+        // Delete all pieces that haven't landed yet
+        foreach (GameObject piece in allPieces) {
+            if (!piece.GetComponent<PiecePhysicsScript>().hasCollided) {
+                Destroy(piece);
+            }
+        }
+        Debug.Log("NEXT STAGE - ALL STABLE");
         foreach (GameObject piece in allPieces) {
             piece.GetComponent<Rigidbody>().isKinematic = true;
             piece.GetComponent<MeshRenderer>().material.color = disabledColor;
