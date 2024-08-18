@@ -14,31 +14,41 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lines:
   - dialogueKey: INTRO1
-    text: ... and after that, NO one will be able to stop me. HAHAHA-
+    text: 1
     portrait: {fileID: 2800000, guid: a68ea1d03f6631745bf0248574fb330f, type: 3}
   - dialogueKey: INTRO2
-    text: What is it??  I'm very in the middle of something.
-    portrait: {fileID: 2800000, guid: be9673eb9fb6523418cb2dea7401c62c, type: 3}
+    text: 1
+    portrait: {fileID: 2800000, guid: a68ea1d03f6631745bf0248574fb330f, type: 3}
   - dialogueKey: INTRO3
-    text: ...
-    portrait: {fileID: 2800000, guid: be9673eb9fb6523418cb2dea7401c62c, type: 3}
+    text: 1
+    portrait: {fileID: 2800000, guid: a68ea1d03f6631745bf0248574fb330f, type: 3}
   - dialogueKey: INTRO4
-    text: 'Ah. You''re the contractor. What '
-    portrait: {fileID: 2800000, guid: be9673eb9fb6523418cb2dea7401c62c, type: 3}
+    text: 1
+    portrait: {fileID: 2800000, guid: a68ea1d03f6631745bf0248574fb330f, type: 3}
   - dialogueKey: INTRO5
-    text: 'As I''m sure you saw on the posting, my last house was destroyed in a...
-      gas leak '
+    text: 1
+    portrait: {fileID: 2800000, guid: a68ea1d03f6631745bf0248574fb330f, type: 3}
+  - dialogueKey: INTRO6
+    text: 1
+    portrait: {fileID: 2800000, guid: a68ea1d03f6631745bf0248574fb330f, type: 3}
+  - dialogueKey: INTRO7
+    text: 1
+    portrait: {fileID: 2800000, guid: a68ea1d03f6631745bf0248574fb330f, type: 3}
+  - dialogueKey: INTRO8
+    text: 1
     portrait: {fileID: 2800000, guid: a68ea1d03f6631745bf0248574fb330f, type: 3}
   - dialogueKey: RESET1
-    text: The raw You reached height H should be delivered very shortly. I trust
-      you
-    portrait: {fileID: 2800000, guid: 006511ea05146ae4bb7f6e339f99ed25, type: 3}
+    text: 1
+    portrait: {fileID: 2800000, guid: a68ea1d03f6631745bf0248574fb330f, type: 3}
+  - dialogueKey: RESET1.5
+    text: 1
+    portrait: {fileID: 2800000, guid: a68ea1d03f6631745bf0248574fb330f, type: 3}
   - dialogueKey: RESET2
-    text: sadfdsaf
-    portrait: {fileID: 2800000, guid: 006511ea05146ae4bb7f6e339f99ed25, type: 3}
-  - dialogueKey: RESET3
-    text: sdafa
-    portrait: {fileID: 2800000, guid: 006511ea05146ae4bb7f6e339f99ed25, type: 3}
-  - dialogueKey: RESET4
-    text: The rawasdfasdfmaterials should be delivered very shortly. I trust you
+    text: 1
+    portrait: {fileID: 2800000, guid: a68ea1d03f6631745bf0248574fb330f, type: 3}
+  - dialogueKey: RESETOUTRO1
+    text: 1
+    portrait: {fileID: 2800000, guid: a68ea1d03f6631745bf0248574fb330f, type: 3}
+  - dialogueKey: RESETOUTRO2
+    text: 1
     portrait: {fileID: 2800000, guid: a68ea1d03f6631745bf0248574fb330f, type: 3}
