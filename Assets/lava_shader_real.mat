@@ -28,8 +28,8 @@ Material:
     - _BUILTIN_QueueControl: 0
     - _BUILTIN_QueueOffset: 0
     - _dampener: 5
-    - _flow_speed: 0.02
-    - _foam_density: 31.1
+    - _flow_speed: 0.06
+    - _foam_density: 9
     - _foam_speed: 3.8
     - _foam_thickness: 5.75
     m_Colors:
