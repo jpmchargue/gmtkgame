@@ -21,7 +21,14 @@ public class DialogueHolder : ScriptableObject
 
         foreach(DialogueLine line in lines)
         {
-            dialogueMap.Add(line.dialogueKey, (line.text, line.portrait));
+            if (dialogueMap.ContainsKey(line.dialogueKey))
+            {
+                dialogueMap[line.dialogueKey] = (line.text, line.portrait);
+            }
+            else
+            {
+                dialogueMap.Add(line.dialogueKey, (line.text, line.portrait));
+            }
         }
 
         return dialogueMap;

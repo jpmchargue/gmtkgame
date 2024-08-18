@@ -24,7 +24,11 @@ public class MainGameLoop : MonoBehaviour
 
     void InitiateTutorial()
     {
-        dialogueTyper.TypeDialogue(new List<(string, Texture)> { (villainDialogueMap["INTRO2"].Item1, villainDialogueMap["INTRO2"].Item2), (villainDialogueMap["INTRO1"].Item1, villainDialogueMap["INTRO1"].Item2) , (villainDialogueMap["INTRO3"].Item1, villainDialogueMap["INTRO3"].Item2) });
+        dialogueTyper.TypeDialogue(new List<(string, Texture)> { 
+            (villainDialogueMap["INTRO1"].Item1, villainDialogueMap["INTRO1"].Item2), 
+            (villainDialogueMap["INTRO2"].Item1, villainDialogueMap["INTRO2"].Item2), 
+            (villainDialogueMap["INTRO3"].Item1, villainDialogueMap["INTRO3"].Item2),
+            (villainDialogueMap["INTRO4"].Item1, villainDialogueMap["INTRO4"].Item2)});
     }
 
 
