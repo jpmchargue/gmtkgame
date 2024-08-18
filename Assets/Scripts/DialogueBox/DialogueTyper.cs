@@ -24,27 +24,54 @@ public class DialogueTyper : MonoBehaviour
         StartCoroutine(TypeLine(dialogue, dialogueType));
     }
 
-    public IEnumerator TypeLine(List<(string, Texture)> dialogue, String dialogueType)
+    public IEnumerator TypeLine(List<(string, Texture)> dialogue, string dialogueType)
     {
         yield return new WaitForSeconds(0.5f);
         portraitAnimator.enabled = false;
+
         foreach (var line in dialogue)
         {
-            
             portraitImage.setPortraitImage(line.Item2);
-
-
 
             Debug.Log(line);
             textComponent.text = "";
+            int fastTextCount = 0; // Counter for fast characters
+
             foreach (char c in line.Item1.ToCharArray())
             {
                 textComponent.text += c;
-                yield return new WaitForSeconds(textSpeed);
+
+                float currentTextSpeed = textSpeed;
+                if (fastTextCount > 0)
+                {
+                    currentTextSpeed = textSpeed / 20;
+                    fastTextCount--;
+                }
+
+                float elapsedTime = 0f;
+                while (elapsedTime < currentTextSpeed)
+                {
+                    if (Input.GetMouseButtonDown(0))
+                    { 
+                        fastTextCount = 20;
+                        break;
+                    }
+                    else
+                    {
+                        yield return null; // Wait for the next frame
+                        elapsedTime += Time.deltaTime;
+                    }
+                }
+
+                if (elapsedTime < currentTextSpeed)
+                {
+                    yield return new WaitForSeconds(currentTextSpeed - elapsedTime);
+                }
             }
-            // Wait for key press before proceeding to the next line
+
             yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Return) || Input.GetMouseButtonDown(0));
         }
+
         portraitAnimator.enabled = true;
         portraitAnimator.Play("PortraitDisappear");
         mainGameLoop.DialogueComplete(dialogueType);
