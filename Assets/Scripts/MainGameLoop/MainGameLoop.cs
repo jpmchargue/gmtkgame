@@ -31,7 +31,11 @@ public class MainGameLoop : MonoBehaviour
             (villainDialogueMap["INTRO1"].Item1, villainDialogueMap["INTRO1"].Item2), 
             (villainDialogueMap["INTRO2"].Item1, villainDialogueMap["INTRO2"].Item2), 
             (villainDialogueMap["INTRO3"].Item1, villainDialogueMap["INTRO3"].Item2),
-            (villainDialogueMap["INTRO4"].Item1, villainDialogueMap["INTRO4"].Item2)},
+            (villainDialogueMap["INTRO4"].Item1, villainDialogueMap["INTRO4"].Item2),
+            (villainDialogueMap["INTRO5"].Item1, villainDialogueMap["INTRO5"].Item2),
+            (villainDialogueMap["INTRO6"].Item1, villainDialogueMap["INTRO6"].Item2),
+            (villainDialogueMap["INTRO7"].Item1, villainDialogueMap["INTRO7"].Item2),
+            (villainDialogueMap["INTRO8"].Item1, villainDialogueMap["INTRO8"].Item2)},
             "INTRO");
     }
 
@@ -42,15 +46,21 @@ public class MainGameLoop : MonoBehaviour
         pieceSpawnerScript.isActive = false;
         dialogueTyper.TypeDialogue(new List<(string, Texture)> {
             (villainDialogueMap["RESET1"].Item1, villainDialogueMap["RESET1"].Item2),
-            (villainDialogueMap["RESET2"].Item1, villainDialogueMap["RESET2"].Item2),
-            (villainDialogueMap["RESET3"].Item1, villainDialogueMap["RESET3"].Item2),
-            (villainDialogueMap["RESET4"].Item1, villainDialogueMap["RESET4"].Item2)},
+            (villainDialogueMap["RESET1.5"].Item1, villainDialogueMap["RESET1.5"].Item2),
+            (villainDialogueMap["RESET2"].Item1, villainDialogueMap["RESET2"].Item2)},
             "RESET");
+    }
+    public void InitiateResetOutro()
+    {
+        dialogueTyper.TypeDialogue(new List<(string, Texture)> {
+            (villainDialogueMap["RESETOUTRO1"].Item1, villainDialogueMap["RESETOUTRO1"].Item2),
+            (villainDialogueMap["RESETOUTRO2"].Item1, villainDialogueMap["RESETOUTRO2"].Item2)},
+           "RESETOUTRO");
     }
 
     public void DialogueComplete(String dialogueType)
     {
-        if(dialogueType == "INTRO")
+        if(dialogueType == "INTRO" || dialogueType == "RESETOUTRO")
         {
             pieceSpawnerScript.isActive = true;
         }

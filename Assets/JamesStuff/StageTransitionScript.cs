@@ -6,6 +6,7 @@ public class StageTransitionScript : MonoBehaviour
 {
     private GameObject pieceSpawner;
     private GameObject ground;
+    private MainGameLoop mainGameLoop;
     private float initialJitter = 0.025f;
     private float jitterDuration = 2.5f;
     private float glideSpeed = 1.0f;
@@ -19,6 +20,7 @@ public class StageTransitionScript : MonoBehaviour
     {
         ground = GameObject.Find("Ground");
         pieceSpawner = GameObject.Find("PieceSpawner");
+        mainGameLoop = GameObject.Find("MainGameLoop").GetComponent<MainGameLoop>();
         StartCoroutine(JitterCooldown());
         StartCoroutine(MovementCooldown());
         AudioSource.PlayClipAtPoint(soundRumble, cameraLocation);
@@ -53,7 +55,7 @@ public class StageTransitionScript : MonoBehaviour
             ground.transform.position = ground.transform.position + (Vector3.down * glideSpeed * Time.deltaTime);
             
         } else if (animationStage == 2) {
-            pieceSpawner.GetComponent<PieceSpawnerScript>().isActive = true;
+            mainGameLoop.InitiateResetOutro();
             Destroy(gameObject);
         }
         
