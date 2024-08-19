@@ -31,7 +31,7 @@ public class DialogueTyper : MonoBehaviour
 
     public IEnumerator TypeLine(List<(string, Texture)> dialogue, string dialogueType)
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.75f);
         portraitAnimator.enabled = false;
         
 
