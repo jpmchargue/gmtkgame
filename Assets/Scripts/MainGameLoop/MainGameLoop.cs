@@ -13,13 +13,14 @@ public class MainGameLoop : MonoBehaviour
     public PieceSpawnerScript pieceSpawnerScript;
     public GameObject nextStageManager;
 
-    public bool alreadyResetFlag1 = false;
+    private bool alreadyResetFlag1 = false;
     public bool alreadyResetFlag2 = false;
 
     public Animator blackScreenAnimator;
     public Animator vinetteAnimator;
     public Animator fireScreenAnimator;
     public Animator cameraDropAnimator;
+    public GameObject endGameScreenObject;
 
 
     private Dictionary<string, (string, Texture)> villainDialogueMap;
@@ -82,6 +83,7 @@ public class MainGameLoop : MonoBehaviour
     }
 
     public void InitiateGameFailure(){
+        endGameScreenObject.SetActive(true);
         pieceSpawnerScript.isActive = false;
         dialogueTyper.TypeDialogue(new List<(string, Texture)> {
             (villainDialogueMap["FAILURE1"].Item1, villainDialogueMap["FAILURE1"].Item2),

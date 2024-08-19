@@ -12,7 +12,7 @@ public class FadeInDetector : MonoBehaviour
         if (isSceneLoaded)
         {
             Debug.Log("This is not the first time the scene is being loaded.");
-            fadeInScreenAnimator.Play("FadeInAnimation");
+            fadeInScreenAnimator.Play("2FadeInAnimation");
         }
         else
         {
