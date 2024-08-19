@@ -854,6 +854,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1394449600647195777}
     - target: {fileID: 171342137707118810, guid: 77381f203140f5b46a1070b4466cbb37, type: 3}
+      propertyPath: scoreAnimator
+      value: 
+      objectReference: {fileID: 788235128}
+    - target: {fileID: 171342137707118810, guid: 77381f203140f5b46a1070b4466cbb37, type: 3}
       propertyPath: vinetteAnimator
       value: 
       objectReference: {fileID: 9433869}
@@ -1181,8 +1185,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 16777215
+  m_fontColor: {r: 1, g: 1, b: 1, a: 0}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
