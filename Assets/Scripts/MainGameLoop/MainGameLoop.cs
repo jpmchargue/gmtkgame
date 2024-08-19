@@ -53,6 +53,7 @@ public class MainGameLoop : MonoBehaviour
     public void InitiateReset()
     {
         if(alreadyResetFlag1 == true){
+            pieceSpawnerScript.isActive = false;
             Instantiate(nextStageManager, Vector3.zero, Quaternion.identity);
             return;
         }
@@ -72,6 +73,7 @@ public class MainGameLoop : MonoBehaviour
     public void InitiateResetOutro()
     {
         if(alreadyResetFlag2 == true){
+            pieceSpawnerScript.isActive = true;
             return;
         }
         dialogueTyper.TypeDialogue(new List<(string, Texture)> {
@@ -90,9 +92,6 @@ public class MainGameLoop : MonoBehaviour
             (villainDialogueMap["FAILURE2"].Item1, villainDialogueMap["FAILURE2"].Item2),
             (villainDialogueMap["FAILURE3"].Item1, villainDialogueMap["FAILURE3"].Item2)},
            "ENDGAME");
-
-
-        
     }
     void playEndGameAnimations(){
         blackScreenAnimator.Play("BlackScreenPanel2Animation");
@@ -112,12 +111,18 @@ public class MainGameLoop : MonoBehaviour
         else if (dialogueType == "RESET")
         {
             Instantiate(nextStageManager, Vector3.zero, Quaternion.identity);
+
         }
         else if (dialogueType == "ENDGAME")
         {
             playEndGameAnimations();
             StartCoroutine(waitAndReloadScene(2f));
         }
+    }
+
+    IEnumerator waitAndRenableSpawner(float waitTime){
+        yield return new WaitForSeconds(waitTime);
+        pieceSpawnerScript.isActive = true;
     }
 
     IEnumerator waitAndReloadScene(float waitTime){

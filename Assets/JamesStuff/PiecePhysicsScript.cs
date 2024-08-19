@@ -36,6 +36,8 @@ public class PiecePhysicsScript : MonoBehaviour
     
     public MainGameLoop mainGameLoop;
     public bool isActive = true;
+
+    private IsFailureTracker isFailureTracker;
     
     // Sounds
     public AudioClip soundHover;
@@ -60,6 +62,7 @@ public class PiecePhysicsScript : MonoBehaviour
 
         buildThreshold = GameObject.Find("BuildThreshold");
         pieceSpawner = GameObject.Find("PieceSpawner");
+        isFailureTracker = GameObject.Find("IsFailureTracker").GetComponent<IsFailureTracker>();
         mainGameLoop = GameObject.Find("MainGameLoop").GetComponent<MainGameLoop>();
         inGameUIManager = GameObject.Find("InGameMenuCanvas").GetComponent<InGameUIManager>();
 
@@ -181,7 +184,12 @@ public class PiecePhysicsScript : MonoBehaviour
     }
 
     void loseGame() {
+        if(isFailureTracker.isFailure == true){
+            return;
+        }
+        isFailureTracker.isFailure = true;
         Debug.Log("Game Over");
+
         mainGameLoop.InitiateGameFailure();
         gameObject.SetActive(false);
     }

@@ -9,17 +9,19 @@ public class FadeInDetector : MonoBehaviour
     public Animator fadeInScreenAnimator;
     void Start()
     {
-        if (isSceneLoaded)
-        {
-            Debug.Log("This is not the first time the scene is being loaded.");
-            fadeInScreenAnimator.Play("2FadeInAnimation");
-        }
-        else
-        {
-            Debug.Log("This is the first time the scene is being loaded.");
-    
-            isSceneLoaded = true;
-        }
+        fadeInScreenAnimator.Play("2FadeInAnimation");
+    //     if (isSceneLoaded)
+    //     {
+    //         Debug.Log("This is not the first time the scene is being loaded.");
+            
+    //         fadeInScreenAnimator.Play("2FadeInAnimation");
+    //     }
+    //     else
+    //     {
+    //         Debug.Log("This is the first time the scene is being loaded.");
+    //  fadeInScreenAnimator.Play("2FadeInAnimation");
+    //         isSceneLoaded = true;
+    //     }
     }
 
     void Update()

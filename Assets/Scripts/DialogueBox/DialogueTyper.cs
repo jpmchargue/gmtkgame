@@ -33,6 +33,7 @@ public class DialogueTyper : MonoBehaviour
     {
         yield return new WaitForSeconds(0.5f);
         portraitAnimator.enabled = false;
+        
 
         foreach (var line in dialogue)
         {

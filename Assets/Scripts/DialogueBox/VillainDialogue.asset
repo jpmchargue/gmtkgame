@@ -18,20 +18,19 @@ MonoBehaviour:
       latest recruit"
     portrait: {fileID: 2800000, guid: a68ea1d03f6631745bf0248574fb330f, type: 3}
   - dialogueKey: INTRO2
-    text: "You know, it\u2019s not every day I find someone foolish \u2014ah, I mean
-      brave enough to join my ranks"
+    text: "It\u2019s not every day I find someone foolish \u2014ah, I mean brave
+      enough to join my ranks"
     portrait: {fileID: 2800000, guid: a68ea1d03f6631745bf0248574fb330f, type: 3}
   - dialogueKey: INTRO3
-    text: ' As it would have it, I have quite the fantastic first task for you to
-      undertake...'
+    text: As it would have it, I have quite the fantastic first task for you to undertake...
     portrait: {fileID: 2800000, guid: a68ea1d03f6631745bf0248574fb330f, type: 3}
   - dialogueKey: INTRO4
-    text: "You see, I just purchased this beautiful piece of real estate here\u2026
-      but it is regretfully lair-less"
+    text: "You see, I just purchased this magnificent volcano here\u2026 but it is
+      regretfully lair-less"
     portrait: {fileID: 2800000, guid: a68ea1d03f6631745bf0248574fb330f, type: 3}
   - dialogueKey: INTRO5
-    text: I need you to build me a new fortress, a citadel of darkness that will
-      stand as a testament to our power!
+    text: Build me a new fortress, a citadel of darkness that will stand as a testament
+      to our power!
     portrait: {fileID: 2800000, guid: a68ea1d03f6631745bf0248574fb330f, type: 3}
   - dialogueKey: INTRO6
     text: " I\u2019ve taken the liberty of ordering all the materials you need. No
