@@ -20,6 +20,8 @@ public class MainGameLoop : MonoBehaviour
     public Animator vinetteAnimator;
     public Animator fireScreenAnimator;
     public Animator cameraDropAnimator;
+
+    public Animator scoreAnimator;
     public GameObject endGameScreenObject;
 
 
@@ -117,6 +119,10 @@ public class MainGameLoop : MonoBehaviour
         {
             playEndGameAnimations();
             StartCoroutine(waitAndReloadScene(2f));
+        }
+
+        if(dialogueType == "INTRO"){
+            scoreAnimator.Play("ScoreAppear");
         }
     }
 
