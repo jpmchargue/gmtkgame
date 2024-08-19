@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lines:
   - dialogueKey: INTRO1
-    text: "Ah welcome, welcome! I\u2019m Dr. Diabolico\u2026 And you must be the
+    text: "Ah welcome, welcome! I\u2019m Dr. Diabolical\u2026 And you must be the
       latest recruit"
     portrait: {fileID: 2800000, guid: a68ea1d03f6631745bf0248574fb330f, type: 3}
   - dialogueKey: INTRO2
