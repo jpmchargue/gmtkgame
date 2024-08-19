@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
+using UnityEngine.SceneManagement;
 
 public class MainGameLoop : MonoBehaviour
 {
@@ -14,6 +15,11 @@ public class MainGameLoop : MonoBehaviour
 
     public bool alreadyResetFlag1 = false;
     public bool alreadyResetFlag2 = false;
+
+    public Animator blackScreenAnimator;
+    public Animator vinetteAnimator;
+    public Animator fireScreenAnimator;
+    public Animator cameraDropAnimator;
 
 
     private Dictionary<string, (string, Texture)> villainDialogueMap;
@@ -67,9 +73,6 @@ public class MainGameLoop : MonoBehaviour
         if(alreadyResetFlag2 == true){
             return;
         }
-
-
-
         dialogueTyper.TypeDialogue(new List<(string, Texture)> {
             (villainDialogueMap["RESETOUTRO1"].Item1, villainDialogueMap["RESETOUTRO1"].Item2),
             (villainDialogueMap["RESETOUTRO2"].Item1, villainDialogueMap["RESETOUTRO2"].Item2)},
@@ -77,6 +80,25 @@ public class MainGameLoop : MonoBehaviour
 
         alreadyResetFlag2 = true;
     }
+
+    public void InitiateGameFailure(){
+        pieceSpawnerScript.isActive = false;
+        dialogueTyper.TypeDialogue(new List<(string, Texture)> {
+            (villainDialogueMap["FAILURE1"].Item1, villainDialogueMap["FAILURE1"].Item2),
+            (villainDialogueMap["FAILURE2"].Item1, villainDialogueMap["FAILURE2"].Item2),
+            (villainDialogueMap["FAILURE3"].Item1, villainDialogueMap["FAILURE3"].Item2)},
+           "ENDGAME");
+
+
+        
+    }
+    void playEndGameAnimations(){
+        blackScreenAnimator.Play("BlackScreenPanel2Animation");
+        fireScreenAnimator.Play("EndGameFirePanelAnimation");
+        vinetteAnimator.Play("EndGameBlackPanelAnimation");
+        cameraDropAnimator.Play("GameEndCameraAnimation");
+    }
+
 
     public void DialogueComplete(String dialogueType)
     {
@@ -87,10 +109,22 @@ public class MainGameLoop : MonoBehaviour
         }
         else if (dialogueType == "RESET")
         {
-            Debug.Log("This is a warning message");
             Instantiate(nextStageManager, Vector3.zero, Quaternion.identity);
         }
+        else if (dialogueType == "ENDGAME")
+        {
+            playEndGameAnimations();
+            StartCoroutine(waitAndReloadScene(2f));
+        }
     }
+
+    IEnumerator waitAndReloadScene(float waitTime){
+        yield return new WaitForSeconds(waitTime);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    
+
 
     // Update is called once per frame
     void Update()

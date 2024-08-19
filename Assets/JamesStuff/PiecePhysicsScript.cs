@@ -182,6 +182,8 @@ public class PiecePhysicsScript : MonoBehaviour
 
     void loseGame() {
         Debug.Log("Game Over");
+        mainGameLoop.InitiateGameFailure();
+        gameObject.SetActive(false);
     }
 
     void FixedUpdate() {
