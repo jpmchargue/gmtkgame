@@ -43,6 +43,7 @@ public class PiecePhysicsScript : MonoBehaviour
     public AudioClip soundDrop;
     public AudioClip soundLockedIn;
     private Vector3 cameraLocation = new Vector3(-16.55f, 23.37f, -9f);
+    private float masterVolume = 0.25f;
     
 
     // Start is called before the first frame update
@@ -87,7 +88,7 @@ public class PiecePhysicsScript : MonoBehaviour
 
                 if (Input.GetMouseButtonUp(0)) {
                     stopDrag();
-                    AudioSource.PlayClipAtPoint(soundDrop, cameraLocation);
+                    AudioSource.PlayClipAtPoint(soundDrop, cameraLocation, masterVolume);
                 }
             }
 
@@ -131,7 +132,7 @@ public class PiecePhysicsScript : MonoBehaviour
         zEulerAngle = transform.eulerAngles.z;
         rb.drag = dragDrag;
         GetComponent<MeshRenderer>().material.color = dragColor;
-        AudioSource.PlayClipAtPoint(soundGrab, cameraLocation);
+        AudioSource.PlayClipAtPoint(soundGrab, cameraLocation, masterVolume);
     }
 
     void stopDrag() {
@@ -175,7 +176,7 @@ public class PiecePhysicsScript : MonoBehaviour
             piece.GetComponent<MeshRenderer>().material.color = disabledColor;
             piece.GetComponent<PiecePhysicsScript>().isActive = false;
         }
-        AudioSource.PlayClipAtPoint(soundLockedIn, cameraLocation);
+        AudioSource.PlayClipAtPoint(soundLockedIn, cameraLocation, masterVolume);
         mainGameLoop.InitiateReset();
     }
 
@@ -205,7 +206,7 @@ public class PiecePhysicsScript : MonoBehaviour
         //If your mouse hovers over the GameObject with the script attached, output this message
         if (isActive && !isHovered) {
             GetComponent<Outline>().enabled = true;
-            AudioSource.PlayClipAtPoint(soundHover, cameraLocation);
+            AudioSource.PlayClipAtPoint(soundHover, cameraLocation, masterVolume);
             isHovered = true;
         }
     }
