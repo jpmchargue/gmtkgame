@@ -15,9 +15,14 @@ public class DialogueTyper : MonoBehaviour
     public SetPortraitImage portraitImage;
     public Texture myTexture;
     public MainGameLoop mainGameLoop;
+    public AudioClip soundDialogueAppear;
+    public AudioClip soundDialogueDisappear;
+    private Vector3 cameraLocation = new Vector3(-16.55f, 23.37f, -9f);
 
     public void TypeDialogue(List<(string, Texture)> dialogue, String dialogueType)
     {
+        AudioSource.PlayClipAtPoint(soundDialogueAppear, cameraLocation, 0.5f);
+        Debug.Log("APPEARING");
         portraitAnimator.Play("PortraitAppear");
         
         textComponent.text = string.Empty;
@@ -73,6 +78,8 @@ public class DialogueTyper : MonoBehaviour
         }
 
         portraitAnimator.enabled = true;
+        AudioSource.PlayClipAtPoint(soundDialogueDisappear, cameraLocation, 0.5f);
+        Debug.Log("DISAPPEARING");
         portraitAnimator.Play("PortraitDisappear");
         mainGameLoop.DialogueComplete(dialogueType);
     }
