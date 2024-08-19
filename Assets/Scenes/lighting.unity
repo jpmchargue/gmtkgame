@@ -1355,6 +1355,18 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 9082203052352248674, guid: 270c997cba86e45338263d52cd1abfc1, type: 3}
   m_PrefabInstance: {fileID: 3560210690984381777}
   m_PrefabAsset: {fileID: 0}
+--- !u!225 &899243301
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 899243296}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!1 &931221420 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1118919416451290660, guid: 13eae0a0fb7104b1eaf47a44da009817, type: 3}
@@ -2355,6 +2367,7 @@ GameObject:
   - component: {fileID: 8155628722766753891}
   - component: {fileID: 6631293288685348742}
   - component: {fileID: 207652444}
+  - component: {fileID: 8155628722766753892}
   m_Layer: 5
   m_Name: InGameMenuCanvas
   m_TagString: Untagged
@@ -2533,7 +2546,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 9082203052352248674, guid: 270c997cba86e45338263d52cd1abfc1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 899243301}
   m_SourcePrefab: {fileID: 100100000, guid: 270c997cba86e45338263d52cd1abfc1, type: 3}
 --- !u!1 &3627280917950941147
 GameObject:
@@ -2798,6 +2814,18 @@ MonoBehaviour:
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
   m_PresetInfoIsWorld: 0
+--- !u!225 &8155628722766753892
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1394449600647195777}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!222 &8545534221489927473
 CanvasRenderer:
   m_ObjectHideFlags: 0
